@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国太平 · 财富弘赢 | 共享百亿增长红利</title>
+    <meta name="description" content="低利率+老龄化双重冲击，央企太平分红险成为财富增值终极答案。连续10年100%红利实现率，共享国家基建、碳中和、黄金投资红利。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部 */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .growth-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin: 20px 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .growth-badge strong {
+            font-size: 2em;
+            color: #ffd700;
+        }
+        
+        /* 章节样式 */
+        .section {
+            background: white;
+            margin: 40px 0;
+            padding: 60px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .section-header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        /* 网格布局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .card {
+            background: #f8f9ff;
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #e0e6ff;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* 数据可视化 */
+        .chart-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .bar-chart {
+            display: flex;
+            align-items: end;
+            height: 200px;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .bar {
+            flex: 1;
+            background: linear-gradient(to top, #667eea, #764ba2);
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .bar:hover {
+            opacity: 0.8;
+        }
+        
+        .bar-label {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        /* 对比表格 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9ff;
+        }
+        
+        .highlight {
+            background: #ffd700;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        /* 行动按钮 */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 20px 60px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                font-size: 0.9em;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <section class="hero">
+        <div class="container">
+            <h1>未来与太平同行</h1>
+            <p class="subtitle">共享百亿增长红利，穿越低利率与老龄化周期</p>
+            
+            <div class="growth-badge">
+                <strong>+94.1%</strong><br>2023年净利润增长
+            </div>
+            <div class="growth-badge">
+                <strong>+64.6%</strong><br>2024年净利润增长
+            </div>
+        </div>
+    </section>
+
+    <!-- 为什么选择分红险 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>为什么是分红险？</h2>
+                <p>监管强制70%利润共享，央企太平与客户荣辱与共</p>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-shield-alt card-icon"></i>
+                    <h3>风险共担机制</h3>
+                    <p>赚钱时客户分70%，亏钱时股东承担全部损失，客户保底2.0%</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-chart-line card-icon"></i>
+                    <h3>持续盈利增长</h3>
+                    <p>2023-2024两年净利润增长超130亿，为分红提供坚实基础</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-users card-icon"></i>
+                    <h3>专业投资团队</h3>
+                    <p>68.56%硕士以上学历，平均12年+经验，40%+投研人员配置</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 投资收益展示 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>顶级投资版图</h2>
+                <p>央企资源+国家战略，锁定长期增长赛道</p>
+                <p>近三年险企平均综合投资收益率行业第一</p>
+            </div>
+            
+            <div class="chart-container">
+                <h3>重点投资项目</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+                    <div style="text-align: center; padding: 30px; background: #f8f9ff; border-radius: 15px;">
+                        <h4 style="color: #667eea;">中国铁建债转股</h4>
+                        <div style="font-size: 2em; font-weight: bold; color: #333; margin: 10px 0;">65亿元</div>
+                        <p>近三年净利润增幅持续超10%，15年期固定股息+转股增值，共享国家基建红利</p>
+                    </div>
+                    <div style="text-align: center; padding: 30px; background: #f8f9ff; border-radius: 15px;">
+                        <h4 style="color: #667eea;">中国核电定增</h4>
+                        <div style="font-size: 2em; font-weight: bold; color: #333; margin: 10px 0;">22.5亿元</div>
+                        <p>2021年非公开发行价4.02元，当前价格9.35元，不含分红投资收益率132.5%，助力世界碳中和，清洁能源长期收益</p>
+                    </div>
+                    <div style="text-align: center; padding: 30px; background: #f8f9ff; border-radius: 15px;">
+                        <h4 style="color: #667eea;">黄金投资试点</h4>
+                        <div style="font-size: 2em; font-weight: bold; color: #333; margin: 10px 0;">全国10家</div>
+                        <p>国家指定，半年涨幅20.9%，通胀对冲利器</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 利率下行危机 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>利率下行危机</h2>
+                <p>从10.98%到0.95%，存款收益断崖式下跌</p>
+            </div>
+            
+            <div class="chart-container">
+                <h3>历年存款利率走势</h3>
+                <div class="bar-chart">
+                    <div class="bar" style="height: 100%;">
+                        <span class="bar-value">10.98%</span>
+                        <span class="bar-label">1996年</span>
+                    </div>
+                    <div class="bar" style="height: 79%;">
+                        <span class="bar-value">8.64%</span>
+                        <span class="bar-label">1997年</span>
+                    </div>
+                    <div class="bar" style="height: 72%;">
+                        <span class="bar-value">7.92%</span>
+                        <span class="bar-label">1998年</span>
+                    </div>
+                    <div class="bar" style="height: 51%;">
+                        <span class="bar-value">5.65%</span>
+                        <span class="bar-label">1999年</span>
+                    </div>
+                    <div class="bar" style="height: 38%;">
+                        <span class="bar-value">4.14%</span>
+                        <span class="bar-label">2007年</span>
+                    </div>
+                    <div class="bar" style="height: 9%;">
+                        <span class="bar-value">0.95%</span>
+                        <span class="bar-label">2025年</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <h3>10万元存款年收益对比</h3>
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em; color: #667eea; font-weight: bold;">1098元</div>
+                        <p>1996年</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em; color: #999; font-weight: bold;">950元</div>
+                        <p>2025年</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em; color: #ff6b6b; font-weight: bold;">?元（负利率时代）</div>
+                        <p>2035年预测</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 养老金危机 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>社保养老金危机</h2>
+                <p>2035年账户耗尽，我们该如何体面养老？</p>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>人口结构恶化</h3>
+                    <p><strong>1964年出生2747万人</strong>，2025年起集中退休<br>
+                    2024年出生人口仅<strong>902万</strong>，供养比急剧恶化</p>
+                </div>
+                
+                <div class="card">
+                    <h3>账户枯竭时间表</h3>
+                    <p>• 2028年：收入开始低于支出<br>
+                    • 2035年：累计结余归零<br>
+                    • 2050年：缺口达16.73万亿</p>
+                </div>
+                
+                <div class="card">
+                    <h3>养老金增幅下滑</h3>
+                    <p>从2016年<strong>6.5%</strong>降至2025年<strong>2%</strong><br>
+                    未来可能进一步下调</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品对比 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>终极解决方案对比</h2>
+                <p>分红险如何碾压所有传统理财方式</p>
+            </div>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>维度</th>
+                        <th>社保养老金</th>
+                        <th>银行存款</th>
+                        <th>房产投资</th>
+                        <th>太平分红险</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>收益确定性</td>
+                        <td>政策风险</td>
+                        <td>利率下行</td>
+                        <td>价格波动</td>
+                        <td><span class="highlight">保底2%+分红</span></td>
+                    </tr>
+                    <tr>
+                        <td>年化收益</td>
+                        <td>2%增长</td>
+                        <td>0.95%</td>
+                        <td>负30%+租金1%</td>
+                        <td><span class="highlight">3.05%+复利</span></td>
+                    </tr>
+                    <tr>
+                        <td>流动性</td>
+                        <td>退休前锁定</td>
+                        <td>提前支取损失</td>
+                        <td>变现周期长</td>
+                        <td><span class="highlight">保单贷款</span></td>
+                    </tr>
+                    <tr>
+                        <td>传承成本</td>
+                        <td>无</td>
+                        <td>无</td>
+                        <td>高额税费</td>
+                        <td><span class="highlight">免税传承</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 产品实证 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>太平财富弘赢•财富积累增值方案</h2>
+                <p>未来的不确定性在增大，稳健的增值是最智慧的布局</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                <div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 20px;">
+                    <h3 style="margin-bottom: 20px;">分红收益+年金领取</h3>
+                    <div style="font-size: 4em; font-weight: bold;">确定增值</div>
+                    <p>预定利率2%+每年分红</p>
+                </div>
+                
+                <div style="text-align: center; padding: 40px; background: #f8f9ff; border-radius: 20px;">
+                    <h3 style="margin-bottom: 20px; color: #667eea;">20年收益演示</h3>
+                    <div style="font-size: 2.5em; font-weight: bold; color: #333;">278,881元</div>
+                    <p>10万×5年缴费，分红+万能账户复利</p>
+                    <small style="color: #666;">同期定存仅85,500元</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动召唤 -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="margin-bottom: 20px;">立即锁定未来红利</h2>
+            <p style="font-size: 1.3em; margin-bottom: 40px; opacity: 0.9;">
+                在降息与老龄化的时代洪流中<br>
+                选择央企太平，选择确定的未来
+            </p>
+            <a href="#contact" class="cta-button">
+                <i class="fas fa-phone"></i> 欢迎预约中国太平财富顾问
+            </a>
+            <p style="margin-top: 20px; opacity: 0.7;">
+                限时赠送十年健康权益
+            </p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer style="text-align: center; padding: 40px; background: #333; color: white;">
+        <p>中山港口思源团队 | 您的专业财富顾问 为您服务</p>
+        <p style="margin-top: 10px; opacity: 0.7;">中国太平创立于1929年，是我国历史上持续经营最为悠久的民族保险品牌</p>
+    </footer>
+
+    <!-- 联系表单模态框 -->
+    <div id="contact" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 40px; border-radius: 20px; max-width: 500px; width: 90%;">
+            <h3 style="margin-bottom: 20px;">很荣幸为您服务</h3>
+            <form>
+                <input type="tel" placeholder="您可直接通过微信或电话预约" style="width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px;">
+                <button type="submit" style="width: 100%; padding: 15px; background: #667eea; color: white; border: none; border-radius: 10px; font-size: 1.1em; cursor: pointer;">郑红梅女士</button>
+            </form>
+            <button onclick="document.getElementById('contact').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 2em; cursor: pointer;">×</button>
+        </div>
+    </div>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                if(this.getAttribute('href') === '#contact') {
+                    document.getElementById('contact').style.display = 'block';
+                } else {
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 数字动画
+        function animateNumber(element, start, end, duration) {
+            let startTime = null;
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                const current = Math.floor(progress * (end - start) + start);
+                element.textContent = current.toLocaleString();
+                if (progress < 1) {
+                    requestAnimationFrame(animation);
+                }
+            }
+            requestAnimationFrame(animation);
+        }
+
+        // 滚动触发动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    if (target.dataset.number) {
+                        animateNumber(target, 0, parseInt(target.dataset.number), 2000);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('[data-number]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
